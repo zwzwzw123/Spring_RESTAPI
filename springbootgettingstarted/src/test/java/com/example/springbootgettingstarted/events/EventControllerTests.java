@@ -98,9 +98,30 @@ public class EventControllerTests {
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
                         .content(this.objectMapper.writeValueAsString(eventDto))
                 )
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isBadRequest());
+    }
 
-        ;
+    @Test
+    public void createEvent_Bad_Request_Wrong_Input() throws Exception {
+
+        EventDto eventDto = EventDto.builder()
+                .name("test")
+                .description("Rest API")
+                .beginEnrollmentDateTime(LocalDateTime.of(2020, 1, 4, 12, 0))
+                .closeEnrollmentDateTime(LocalDateTime.of(2020, 1, 3, 12, 0))
+                .beginEventDateTime(LocalDateTime.of(2020, 1, 2, 1, 0))
+                .endEventDateTime(LocalDateTime.of(2020, 1, 1, 1, 0))
+                .basePrice(10000)
+                .maxPrice(200)
+                .limitOfEnrollment(100)
+                .location("강남역 d2 스타텁 팩토리")
+                .build();
+
+        this.mockMvc.perform(post("/api/events")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(this.objectMapper.writeValueAsString(eventDto))
+                )
+                .andExpect(status().isBadRequest());
     }
 
 }
