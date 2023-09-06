@@ -1,0 +1,15 @@
+
+Q
+java:S3740 "/Provide the parametrized type for this generic.(¤œ´şÿÿÿÿ8ˆã…¤¦1
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8›ã…¤¦1
+`
+java:S1128"CRemove this unused import 'org.springframework.hateoas.MediaTypes'.(–‰¦Å8›ã…¤¦1
+a
+java:S1128"?Remove this unused import 'org.springframework.http.MediaType'.(úŸİ¯şÿÿÿÿ8›ã…¤¦1
+h
+java:S1128"FRemove this unused import 'org.springframework.stereotype.Controller'.(øŠ—Öùÿÿÿÿ8›ã…¤¦1
+p
+java:S1128"SRemove this unused import 'org.springframework.web.bind.annotation.RequestMapping'.(ö»¿ë8›ã…¤¦1
+€
+java:S1128"^Remove this unused import 'org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn'.(›¥ŠÈøÿÿÿÿ8›ã…¤¦1

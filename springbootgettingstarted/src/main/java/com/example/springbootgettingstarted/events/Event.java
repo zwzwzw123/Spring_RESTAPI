@@ -1,4 +1,4 @@
-package com.example.springbootgettingstarted.event;
+package com.example.springbootgettingstarted.events;
 
 import jakarta.persistence.*;
 import lombok.*;

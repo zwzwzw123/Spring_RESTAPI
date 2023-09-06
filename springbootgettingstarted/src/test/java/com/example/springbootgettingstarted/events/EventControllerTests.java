@@ -1,18 +1,12 @@
-package com.example.springbootgettingstarted.event;
+package com.example.springbootgettingstarted.events;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.tomcat.util.file.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -42,7 +36,7 @@ public class EventControllerTests {
         EventDto event = EventDto.builder()
                 .name("test")
                 .description("Rest API")
-                .beginEventDateTime(LocalDateTime.of(2020, 1, 1, 12, 0))
+                .beginEnrollmentDateTime(LocalDateTime.of(2020, 1, 1, 12, 0))
                 .closeEnrollmentDateTime(LocalDateTime.of(2020, 1, 2, 12, 0))
                 .beginEventDateTime(LocalDateTime.of(2020, 1, 3, 1, 0))
                 .endEventDateTime(LocalDateTime.of(2020, 1, 4, 1, 0))
@@ -73,7 +67,7 @@ public class EventControllerTests {
                 .id(10)
                 .name("test")
                 .description("Rest API")
-                .beginEventDateTime(LocalDateTime.of(2020, 1, 1, 12, 0))
+                .beginEnrollmentDateTime(LocalDateTime.of(2020, 1, 1, 12, 0))
                 .closeEnrollmentDateTime(LocalDateTime.of(2020, 1, 2, 12, 0))
                 .beginEventDateTime(LocalDateTime.of(2020, 1, 3, 1, 0))
                 .endEventDateTime(LocalDateTime.of(2020, 1, 4, 1, 0))
@@ -86,6 +80,7 @@ public class EventControllerTests {
                 .eventStatus(EventStatus.PUBLISHED)
                 .build();
 
+
         mockMvc.perform(post("/api/events")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaTypes.HAL_JSON)
@@ -95,5 +90,17 @@ public class EventControllerTests {
         ;
     }
 
+    @Test
+    public void createEvent_Bad_Request_Empty_Input() throws Exception {
+        EventDto eventDto = EventDto.builder().build();
+
+        this.mockMvc.perform(post("/api/events")
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(this.objectMapper.writeValueAsString(eventDto))
+                )
+                .andExpect(status().isBadRequest())
+
+        ;
+    }
 
 }

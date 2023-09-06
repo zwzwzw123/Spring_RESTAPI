@@ -1,7 +1,6 @@
-package com.example.springbootgettingstarted.event;
+package com.example.springbootgettingstarted.events;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 
 public interface EventRepository extends JpaRepository<Event, Integer> {
